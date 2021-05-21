@@ -1,1 +1,1 @@
-java -jar NewShoot.jar
+java -jar Shoot.jar
