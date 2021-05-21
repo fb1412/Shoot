@@ -1,8 +1,10 @@
 # 打飞机游戏
 
-env.json可以配置游戏参数：
+<https://github.com/fb1412/Shoot.git>
 
-+ interval --- 游戏速度，XX毫秒一帧
+setting.json可以配置游戏参数：
+
++ interval --- 游戏速度，XX毫秒一帧(所以越大越快)
 + skySpeed --- 背景速度
 + Hero:
   + life --- 初始血量
