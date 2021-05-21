@@ -2,7 +2,7 @@ package shoot;
 
 import java.awt.image.BufferedImage;
 
-public abstract class Enemies extends shoot.FlyingObject {
+public abstract class Enemies extends FlyingObject {
 
     protected int score;
     protected int life;

@@ -17,8 +17,8 @@ public class World extends JPanel {
     private int state = START;
     private int score = 0;
 
-    public static final int WIDTH = shoot.Images.Sky.getWidth();
-    public static final int HEIGHT = shoot.Images.Sky.getHeight();
+    public static final int WIDTH = Images.Sky.getWidth();
+    public static final int HEIGHT = Images.Sky.getHeight();
     private static final int interval = Setting.Interval; // xx毫秒一帧
     private static final int NUM = Setting.EnemiesFrequency;// 敌人生成的总体概率
     private static final int bulletFrequency = Setting.Bullet; // 每xx帧射一发
@@ -26,10 +26,10 @@ public class World extends JPanel {
     private static final int BeeFrequency = Setting.BeeFrequency; // 火力奖励概率%
     private static final int waspFrequency = Setting.WaspFrequency; // 生命奖励概率%
 
-    private shoot.Sky sky = new shoot.Sky();
-    private shoot.Hero hero = new shoot.Hero();
-    private shoot.Enemies[] enemies = {};
-    private shoot.Bullet[] bullet = {};
+    private Sky sky = new Sky();
+    private Hero hero = new Hero();
+    private Enemies[] enemies = {};
+    private Bullet[] bullet = {};
 
     public void action() {
         MouseAdapter m = new MouseAdapter() {
@@ -48,10 +48,10 @@ public class World extends JPanel {
                         break;
                     case GAME_OVER:
                         score = 0;
-                        sky = new shoot.Sky();
-                        hero = new shoot.Hero();
-                        enemies = new shoot.Enemies[0];
-                        bullet = new shoot.Bullet[0];
+                        sky = new Sky();
+                        hero = new Hero();
+                        enemies = new Enemies[0];
+                        bullet = new Bullet[0];
                         state = START;
                         break;
                 }
@@ -95,7 +95,7 @@ public class World extends JPanel {
      */
     public void flyingStep() {
         sky.step();
-        for (shoot.Enemies i : enemies) {
+        for (Enemies i : enemies) {
             // System.out.println(i.x + "," + i.y);
             i.step();
         }
@@ -112,11 +112,11 @@ public class World extends JPanel {
             int flag = r.nextInt(100);
             enemies = Arrays.copyOf(enemies, enemies.length + 1);
             if (flag < BeeFrequency) {
-                enemies[enemies.length - 1] = new shoot.Bee();
+                enemies[enemies.length - 1] = new Bee();
             } else if (flag < BeeFrequency + bigAirplaneFrequency) {
-                enemies[enemies.length - 1] = new shoot.BigAirplane();
+                enemies[enemies.length - 1] = new BigAirplane();
             } else if (flag < BeeFrequency + bigAirplaneFrequency + waspFrequency) {
-                enemies[enemies.length - 1] = new shoot.Wasp();
+                enemies[enemies.length - 1] = new Wasp();
             } else {
                 enemies[enemies.length - 1] = new Airplane();
             }
@@ -158,11 +158,11 @@ public class World extends JPanel {
         index++;
         if (state == RUNNING && index > bulletFrequency) {
             index = 0;
-            shoot.Bullet[] b = hero.shoot();
+            Bullet[] b = hero.shoot();
             bullet = Arrays.copyOf(bullet, bullet.length + b.length);
             System.arraycopy(b, 0, bullet, bullet.length - b.length, b.length);
         }
-        for (shoot.Bullet i : bullet) {
+        for (Bullet i : bullet) {
             i.step();
         }
     }
@@ -173,9 +173,9 @@ public class World extends JPanel {
     public void hitEnemies() {
         // System.out.println(enemies.length + "|" + bullet.length);
         for (int i = 0; i < bullet.length; i++) {
-            shoot.Bullet b = bullet[i];
+            Bullet b = bullet[i];
             for (int j = 0; j < enemies.length; j++) {
-                shoot.Enemies e = enemies[j];
+                Enemies e = enemies[j];
                 if (b.isHit(e)) {
                     b.isLife = 1;
                     if (e.goDead()) {
@@ -215,10 +215,10 @@ public class World extends JPanel {
         g.drawImage(sky.getImg(), sky.x, sky.y1, null);
         // System.out.println(hero.x + "|" + hero.y);
         g.drawImage(hero.getImg(), hero.x, hero.y, null);
-        for (shoot.Enemies i : enemies) {
+        for (Enemies i : enemies) {
             g.drawImage(i.getImg(), i.x, i.y, null);
         }
-        for (shoot.FlyingObject i : bullet) {
+        for (FlyingObject i : bullet) {
             g.drawImage(i.getImg(), i.x, i.y, null);
         }
 
@@ -228,13 +228,13 @@ public class World extends JPanel {
         g.drawString("火力：" + hero.getFire(), 50, 95);
         switch (state) {
             case START:
-                g.drawImage(shoot.Images.start, (WIDTH - shoot.Images.start.getWidth()) / 2, 0, null);
+                g.drawImage(Images.start, (WIDTH - Images.start.getWidth()) / 2, 0, null);
                 break;
             case PAUSE:
-                g.drawImage(shoot.Images.pause, (WIDTH - shoot.Images.pause.getWidth()) / 2, 0, null);
+                g.drawImage(Images.pause, (WIDTH - Images.pause.getWidth()) / 2, 0, null);
                 break;
             case GAME_OVER:
-                g.drawImage(shoot.Images.gameover, (WIDTH - shoot.Images.gameover.getWidth()) / 2, 0, null);
+                g.drawImage(Images.gameover, (WIDTH - Images.gameover.getWidth()) / 2, 0, null);
                 break;
         }
     }

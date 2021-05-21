@@ -5,11 +5,11 @@ import java.awt.image.BufferedImage;
 /**
  * 小飞机
  */
-public class Airplane extends shoot.Enemies {
+public class Airplane extends Enemies {
     private final int speed = Setting.AirplaneSpeed;// 速度
 
     public Airplane() {
-        super(shoot.Images.Airplane[0].getWidth(), shoot.Images.Airplane[0].getHeight(), Setting.AirplaneScore,
+        super(Images.Airplane[0].getWidth(), Images.Airplane[0].getHeight(), Setting.AirplaneScore,
                 Setting.AirplaneLife);
     }
 
@@ -22,11 +22,11 @@ public class Airplane extends shoot.Enemies {
     @Override
     public BufferedImage getImg() {
         if (isLife == 0) {
-            return shoot.Images.Airplane[0];
+            return Images.Airplane[0];
         } else {
-            BufferedImage img = shoot.Images.Airplane[index];
+            BufferedImage img = Images.Airplane[index];
             index++;
-            if (index == shoot.Images.Airplane.length) {
+            if (index == Images.Airplane.length) {
                 isLife = 2;
                 index = 4;// 应为当撞击导致gameover时线程不执行所以必须处理一下
             }

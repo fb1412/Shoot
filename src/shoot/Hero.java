@@ -5,39 +5,41 @@ import java.awt.image.BufferedImage;
 /**
  * 主角
  */
-public class Hero extends FlyingObject{
-    private int life = Setting.HeroLife;//初始血量
-    private int fire = Setting.HeroFire;//火力
-    
-    public Hero(){
-        super(shoot.Images.Hero[0].getWidth(), shoot.Images.Hero[0].getHeight(), (World.WIDTH - shoot.Images.Hero[0].getWidth()) / 2, 400);
+public class Hero extends FlyingObject {
+    private int life = Setting.HeroLife;// 初始血量
+    private int fire = Setting.HeroFire;// 火力
+
+    public Hero() {
+        super(Images.Hero[0].getWidth(), Images.Hero[0].getHeight(), (World.WIDTH - Images.Hero[0].getWidth()) / 2,
+                400);
     }
-    
-    public void step(){
+
+    public void step() {
     }
-    
+
     private int index = 0;
-    
-    @Override public BufferedImage getImg(){
-//        if (index < Images.Hero.length - 1) {
-//            index++;
-//        } else {
-//            index = 0;
-//        }
-//        // System.out.println(index);
-//        return Images.Hero[index];
-        return shoot.Images.Hero[index++ % shoot.Images.Hero.length];
+
+    @Override
+    public BufferedImage getImg() {
+        // if (index < Images.Hero.length - 1) {
+        // index++;
+        // } else {
+        // index = 0;
+        // }
+        // // System.out.println(index);
+        // return Images.Hero[index];
+        return Images.Hero[index++ % Images.Hero.length];
     }
-    
-    public void move(int x, int y){
+
+    public void move(int x, int y) {
         this.x = x;
         this.y = y;
     }
-    
+
     /**
      * 死了返回false
      */
-    public boolean setLife(boolean b){
+    public boolean setLife(boolean b) {
         if (b) {
             this.life -= 1;
             if (life <= 0) {
@@ -50,28 +52,28 @@ public class Hero extends FlyingObject{
             return true;
         }
     }
-    
-    public int getLife(){
+
+    public int getLife() {
         return life;
     }
-    
-    public void addFire(boolean b, int addFire){
+
+    public void addFire(boolean b, int addFire) {
         if (b) {
             fire += addFire;
         }
     }
-    
-    public void addLife(boolean b, int addLife){
+
+    public void addLife(boolean b, int addLife) {
         if (b) {
             life += addLife;
         }
     }
-    
-    public int getFire(){
+
+    public int getFire() {
         return fire;
     }
-    
-    public Bullet[] shoot(){
+
+    public Bullet[] shoot() {
         Bullet[] b;
         if (fire > 0) {
             b = new Bullet[2];
@@ -85,8 +87,8 @@ public class Hero extends FlyingObject{
         return b;
     }
 
-    public void clearFire(){
+    public void clearFire() {
         fire = 0;
     }
-    
+
 }
