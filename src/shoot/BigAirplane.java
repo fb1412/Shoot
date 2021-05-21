@@ -9,7 +9,7 @@ public class BigAirplane extends shoot.Enemies{
     private final int speed = Setting.BigAirplaneSpeed;//速度
     
     public BigAirplane(){
-        super(shoot.Images.BigAirplane[0].getWidth(), shoot.Images.BigAirplane[0].getHeight(), Setting.BigAirplaneScore);
+        super(shoot.Images.BigAirplane[0].getWidth(), shoot.Images.BigAirplane[0].getHeight(), Setting.BigAirplaneScore,Setting.BigAirplaneLife);
     }
     
     public void step(){

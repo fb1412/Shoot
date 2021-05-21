@@ -18,24 +18,29 @@ public class Setting{
     
     
     public static int BeeFrequency;
+    public static int BeeLife;
     public static int BeeaddFire;
     public static int BeeXSpeed;
     public static int BeeYSpeed;
     
     public static int WaspFrequency;
+    public static int WaspLife;
     public static int WaspAddLife;
     public static int WaspXSpeed;
     public static int WaspYSpeed;
     
     public static int BigAirplaneFrequency;
+    public static int BigAirplaneLife;
     public static int BigAirplaneScore;
     public static int BigAirplaneSpeed;
     
+    
+    public static int AirplaneLife;
     public static int AirplaneScore;
     public static int AirplaneSpeed;
     
     static{
-        Setting json = new Setting("./setting.json"); // 这里填入文件路径文件路径
+        Setting json = new Setting("./setting.json"); // 这里填入文件路径
         JSONObject env = json.getJson();
         
         Interval = env.getInteger("interval");
@@ -51,22 +56,26 @@ public class Setting{
         
         JSONObject bee = enemies.getJSONObject("Bee");
         BeeFrequency = bee.getInteger("frequency");
+        BeeLife = bee.getInteger("life");
         BeeaddFire = bee.getInteger("addFire");
         BeeXSpeed = bee.getInteger("xSpeed");
         BeeYSpeed = bee.getInteger("YSpeed");
         
         JSONObject Wasp = enemies.getJSONObject("Wasp");
         WaspFrequency = Wasp.getInteger("frequency");
+        WaspLife = Wasp.getInteger("life");
         WaspAddLife = Wasp.getInteger("addLife");
         WaspXSpeed = Wasp.getInteger("xSpeed");
         WaspYSpeed = Wasp.getInteger("YSpeed");
         
         JSONObject bigAirplane = enemies.getJSONObject("BigAirplane");
         BigAirplaneFrequency = bigAirplane.getInteger("frequency");
+        BigAirplaneLife = bigAirplane.getInteger("life");
         BigAirplaneScore = bigAirplane.getInteger("score");
         BigAirplaneSpeed = bigAirplane.getInteger("Speed");
         
         JSONObject airplane = enemies.getJSONObject("Airplane");
+        AirplaneLife = airplane.getInteger("life");
         AirplaneScore = airplane.getInteger("score");
         AirplaneSpeed = airplane.getInteger("Speed");
     }

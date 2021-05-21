@@ -84,5 +84,9 @@ public class Hero extends FlyingObject{
         }
         return b;
     }
+
+    public void clearFire(){
+        fire = 0;
+    }
     
 }

@@ -1,25 +1,26 @@
 package shoot;
 
-
 import java.awt.image.BufferedImage;
 
 /**
  * 小飞机
  */
-public class Airplane extends shoot.Enemies{
-    private final int speed = Setting.AirplaneSpeed;//速度
-    
-    public Airplane(){
-        super(shoot.Images.Airplane[0].getWidth(), shoot.Images.Airplane[0].getHeight(), Setting.AirplaneScore);
+public class Airplane extends shoot.Enemies {
+    private final int speed = Setting.AirplaneSpeed;// 速度
+
+    public Airplane() {
+        super(shoot.Images.Airplane[0].getWidth(), shoot.Images.Airplane[0].getHeight(), Setting.AirplaneScore,
+                Setting.AirplaneLife);
     }
-    
-    public void step(){
+
+    public void step() {
         y += speed;
     }
-    
+
     private int index = 1;
-    
-    @Override public BufferedImage getImg(){
+
+    @Override
+    public BufferedImage getImg() {
         if (isLife == 0) {
             return shoot.Images.Airplane[0];
         } else {
@@ -32,5 +33,5 @@ public class Airplane extends shoot.Enemies{
             return img;
         }
     }
-    
+
 }

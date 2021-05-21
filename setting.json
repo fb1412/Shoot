@@ -10,22 +10,26 @@
     "frequency": 5,
     "Bee": {
       "frequency": 5,
+      "life": 1,
       "addFire": 10,
       "xSpeed": 2,
       "YSpeed": 3
     },
     "Wasp": {
       "frequency": 5,
+      "life": 1,
       "addLife": 1,
       "xSpeed": 2,
       "YSpeed": 3
     },
     "BigAirplane": {
       "frequency": 5,
+      "life": 2,
       "score": 2,
       "Speed": 3
     },
     "Airplane": {
+      "life": 1,
       "score": 1,
       "Speed": 3
     }
