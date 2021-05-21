@@ -228,13 +228,16 @@ public class World extends JPanel {
         g.drawString("火力：" + hero.getFire(), 50, 95);
         switch (state) {
             case START:
-                g.drawImage(Images.start, (WIDTH - Images.start.getWidth()) / 2, 0, null);
+                g.drawImage(Images.start, (WIDTH - Images.start.getWidth()) / 2,
+                        (HEIGHT - Images.start.getHeight()) / 4, null);
                 break;
             case PAUSE:
-                g.drawImage(Images.pause, (WIDTH - Images.pause.getWidth()) / 2, 0, null);
+                g.drawImage(Images.pause, (WIDTH - Images.pause.getWidth()) / 2,
+                        (HEIGHT - Images.pause.getHeight()) / 4, null);
                 break;
             case GAME_OVER:
-                g.drawImage(Images.gameover, (WIDTH - Images.gameover.getWidth()) / 2, 0, null);
+                g.drawImage(Images.gameover, (WIDTH - Images.gameover.getWidth()) / 2,
+                        (HEIGHT - Images.gameover.getHeight()) / 4, null);
                 break;
         }
     }

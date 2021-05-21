@@ -11,7 +11,7 @@ public class Hero extends FlyingObject {
 
     public Hero() {
         super(Images.Hero[0].getWidth(), Images.Hero[0].getHeight(), (World.WIDTH - Images.Hero[0].getWidth()) / 2,
-                400);
+                450);
     }
 
     public void step() {
