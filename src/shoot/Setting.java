@@ -35,7 +35,7 @@ public class Setting{
     public static int AirplaneSpeed;
     
     static{
-        Setting json = new Setting("./env.json"); // 这里填入文件路径文件路径
+        Setting json = new Setting("./setting.json"); // 这里填入文件路径文件路径
         JSONObject env = json.getJson();
         
         Interval = env.getInteger("interval");
