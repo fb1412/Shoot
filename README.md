@@ -4,7 +4,7 @@
 
 setting.json可以配置游戏参数：
 
-+ interval --- 游戏速度，XX毫秒一帧(所以越大越快)
++ interval --- 游戏速度，XX毫秒一帧(所以越大越慢)
 + skySpeed --- 背景速度
 + Hero:
   + life --- 初始血量
