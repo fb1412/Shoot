@@ -9,7 +9,8 @@ setting.json可以配置游戏参数：
 + Hero:
   + life --- 初始血量
   + fire --- 初始火力
-  + Bullet --- 子弹发射频率
+  + Bullet --- 子弹发射频率，XX帧一发(所以越小越快)
+  + BulletSpeed --- 子弹速度
   
 + enemies
   + frequency --- 敌人总体生成频率

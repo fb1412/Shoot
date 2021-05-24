@@ -4,7 +4,8 @@
   "Hero": {
     "life": 3,
     "fire": 0,
-    "Bullet": 20
+    "Bullet": 20,
+    "BulletSpeed": 3
   },
   "enemies": {
     "frequency": 5,
@@ -23,7 +24,7 @@
       "YSpeed": 3
     },
     "BigAirplane": {
-      "frequency": 5,
+      "frequency": 10,
       "life": 2,
       "score": 2,
       "Speed": 3
