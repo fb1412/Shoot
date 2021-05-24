@@ -75,7 +75,20 @@ public class Hero extends FlyingObject {
 
     public Bullet[] shoot() {
         Bullet[] b;
-        if (fire > 0) {
+        if (fire > 20) {
+            b = new Bullet[5];
+            b[0] = new Bullet(x, y, 1);
+            b[1] = new Bullet(width / 4 + x, y);
+            b[2] = new Bullet(width * 2 / 4 + x, y);
+            b[3] = new Bullet(width * 3 / 4 + x, y);
+            b[4] = new Bullet(width + x, y, 2);
+        } else if (fire > 10) {
+            b = new Bullet[3];
+            b[0] = new Bullet(width / 4 + x, y);
+            b[1] = new Bullet(width * 2 / 4 + x, y);
+            b[2] = new Bullet(width * 3 / 4 + x, y);
+            fire--;
+        } else if (fire > 0) {
             b = new Bullet[2];
             b[0] = new Bullet(width / 3 + x, y);
             b[1] = new Bullet(width * 2 / 3 + x, y);
