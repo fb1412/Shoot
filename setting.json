@@ -33,6 +33,13 @@
       "life": 1,
       "score": 1,
       "Speed": 3
+    },
+    "Boss": {
+      "life": 100,
+      "score": 100,
+      "xSpeed": 1,
+      "ySpeed": 1,
+      "frequency": 100
     }
   }
 }

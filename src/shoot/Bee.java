@@ -9,7 +9,7 @@ public class Bee extends Enemies implements Award {
     private int xSpeed = Setting.BeeXSpeed; // x速度
     private final int ySpeed = Setting.BeeYSpeed; // y速度
     int awardType; // 奖励类型
-    int value = Setting.BeeaddFire;// 增长生命;
+    int value = Setting.BeeAddFire;// 增长生命;
 
     public Bee() {
         super(Images.Bee[0].getWidth(), Images.Bee[0].getHeight(), 0, Setting.BeeLife);

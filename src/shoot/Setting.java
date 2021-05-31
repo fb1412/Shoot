@@ -19,7 +19,7 @@ public class Setting{
     
     public static int BeeFrequency;
     public static int BeeLife;
-    public static int BeeaddFire;
+    public static int BeeAddFire;
     public static int BeeXSpeed;
     public static int BeeYSpeed;
     
@@ -37,6 +37,12 @@ public class Setting{
     public static int AirplaneLife;
     public static int AirplaneScore;
     public static int AirplaneSpeed;
+    
+    public static int BossFrequency;
+    public static int BossLife;
+    public static int BossScore;
+    public static int BossXSpeed;
+    public static int BossYSpeed;
     
     static{
         Setting json = new Setting("./setting.json"); // 这里填入文件路径
@@ -57,7 +63,7 @@ public class Setting{
         JSONObject bee = enemies.getJSONObject("Bee");
         BeeFrequency = bee.getInteger("frequency");
         BeeLife = bee.getInteger("life");
-        BeeaddFire = bee.getInteger("addFire");
+        BeeAddFire = bee.getInteger("addFire");
         BeeXSpeed = bee.getInteger("xSpeed");
         BeeYSpeed = bee.getInteger("YSpeed");
         
@@ -78,6 +84,13 @@ public class Setting{
         AirplaneLife = airplane.getInteger("life");
         AirplaneScore = airplane.getInteger("score");
         AirplaneSpeed = airplane.getInteger("Speed");
+        
+        JSONObject boss = enemies.getJSONObject("Boss");
+        BossFrequency = boss.getInteger("frequency");
+        BossLife = boss.getInteger("life");
+        BossScore = boss.getInteger("score");
+        BossXSpeed = boss.getInteger("xSpeed");
+        BossYSpeed = boss.getInteger("ySpeed");
     }
     
     Setting(){

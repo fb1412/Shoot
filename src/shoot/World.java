@@ -125,7 +125,7 @@ public class World extends JPanel{
                 enemies[enemies.length - 1] = new Airplane();
             }
         }
-        if (haveBoss == 0 && enemiesCount > 100) {
+        if (haveBoss == 0 && enemiesCount > Setting.BossFrequency) {
             enemies = Arrays.copyOf(enemies, enemies.length + 1);
             enemies[enemies.length - 1] = new Boss();
             haveBoss = 1;
