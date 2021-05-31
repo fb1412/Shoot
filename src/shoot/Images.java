@@ -14,11 +14,12 @@ public class Images{
     public static BufferedImage[] BigAirplane;
     public static BufferedImage[] Bee;
     public static BufferedImage[] Wasp;
+    public static BufferedImage[] Boss;
     
     
     public static BufferedImage start;
     public static BufferedImage pause;
-    public static BufferedImage gameover;
+    public static BufferedImage gameOver;
     
     static{
         Sky = readImage("img/background.png");
@@ -44,9 +45,16 @@ public class Images{
             Wasp[i] = readImage("img/bom" + 1 + ".png");
         }
         
+        Boss = new BufferedImage[9];
+        Boss[0] = readImage("img/boss.png");
+        Boss[1] = readImage("img/boss1.png");
+        for (int i = 2 ; i < Boss.length ; i++) {
+            Boss[i] = readImage("img/boss_hit" + (i - 1) + ".png");
+        }
+        
         start = readImage("img/start.png");
         pause = readImage("img/pause.png");
-        gameover = readImage("img/gameover.png");
+        gameOver = readImage("img/gameover.png");
     }
     
     public static BufferedImage readImage(String imgPath){

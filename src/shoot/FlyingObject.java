@@ -48,14 +48,7 @@ public abstract class FlyingObject{
                         && myYTop < enemyYLow && myYLow > enemyYTop
         );
     }
-
-
-//    /**
-//     * 去世
-//     */
-//    public void death(){
-//        isLife = 1;
-//    }
+    
 }
 
 
