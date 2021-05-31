@@ -32,7 +32,7 @@ public class Boss extends Bosses{
     }
     
     private int life_index = 0;
-    private int death_index = 2;
+    private int death_index = 1;
     
     @Override public BufferedImage getImg(){
         if (isLife == 0) {
@@ -42,7 +42,7 @@ public class Boss extends Bosses{
             death_index++;
             if (death_index == Images.Boss.length) {
                 isLife = 2;
-                death_index = 8;
+                death_index = 22;
             }
             return img;
         }

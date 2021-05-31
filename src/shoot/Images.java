@@ -45,11 +45,17 @@ public class Images{
             Wasp[i] = readImage("img/bom" + 1 + ".png");
         }
         
-        Boss = new BufferedImage[9];
+        Boss = new BufferedImage[27];
         Boss[0] = readImage("img/boss.png");
         Boss[1] = readImage("img/boss1.png");
-        for (int i = 2 ; i < Boss.length ; i++) {
-            Boss[i] = readImage("img/boss_hit" + (i - 1) + ".png");
+        int j = 1;
+        for (int i = 2 ; i < Boss.length ; i += 5) {
+            Boss[i] = readImage("img/boss_hit" + j + ".png");
+            Boss[i + 1] = readImage("img/boss_hit" + j + ".png");
+            Boss[i + 2] = readImage("img/boss_hit" + j + ".png");
+            Boss[i + 3] = readImage("img/boss_hit" + j + ".png");
+            Boss[i + 4] = readImage("img/boss_hit" + j + ".png");
+            j++;
         }
         
         start = readImage("img/start.png");
