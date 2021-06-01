@@ -148,7 +148,7 @@ public class World extends JPanel{
             if (enemies[i].isOut() || enemies[i].isLife == 2) {
                 if (enemies[i] instanceof Bosses) {
                     haveBoss -= 1;
-                    hero.cleanFire();
+                    hero.clearFire();
                 }
                 enemies[i] = enemies[enemies.length - 1];
                 enemies = Arrays.copyOf(enemies, enemies.length - 1);
@@ -200,7 +200,6 @@ public class World extends JPanel{
                 if (b.isHit(e)) {
                     b.isLife = 1;
                     if (e.goDead()) {
-                        e.isLife = 1;
                         score += e.getScore();
                     }
                     boolean isAward = e instanceof Award;
@@ -222,7 +221,7 @@ public class World extends JPanel{
         for (int i = 0 ; i < enemies.length ; i++) {
             boolean hit = hero.isHit(enemies[i]);
             if (hit) {
-                enemies[i].isLife = 1;
+                enemies[i].goDead();
                 if (!hero.setLife(true)) {
                     state = GAME_OVER;
                 }

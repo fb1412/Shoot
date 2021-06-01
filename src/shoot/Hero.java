@@ -63,10 +63,6 @@ public class Hero extends FlyingObject{
         }
     }
     
-    public void cleanFire(){
-        fire = 0;
-    }
-    
     public void addLife(boolean b, int addLife){
         if (b) {
             life += addLife;

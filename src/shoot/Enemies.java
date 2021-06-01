@@ -34,8 +34,11 @@ public abstract class Enemies extends FlyingObject{
      * 死了为真
      */
     public boolean goDead(){
-        life--;
+        if (isLife == 0) {
+            life--;
+        }
         if (life < 1) {
+            isLife = 1;
             return true;
         } else {
             return false;
