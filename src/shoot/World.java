@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Timer;
@@ -33,6 +34,8 @@ public class World extends JPanel{
     
     public void action(){
         MouseAdapter m = new MouseAdapter(){
+            
+            // 获取主角位置
             public void mouseMoved(MouseEvent e){
                 if (state == RUNNING) {
                     int x = e.getX();
@@ -41,6 +44,7 @@ public class World extends JPanel{
                 }
             }
             
+            // 开始游戏
             public void mouseClicked(MouseEvent e){
                 switch (state) {
                     case START:
@@ -57,12 +61,14 @@ public class World extends JPanel{
                 }
             }
             
+            // 暂停游戏
             public void mouseExited(MouseEvent e){
                 if (state == RUNNING) {
                     state = PAUSE;
                 }
             }
             
+            // 从暂停到开始
             public void mouseEntered(MouseEvent e){
                 if (state == PAUSE) {
                     state = RUNNING;
@@ -260,6 +266,9 @@ public class World extends JPanel{
         JFrame frame = new JFrame();
         World world = new World();
         frame.add(world);
+        URL classUrl = world.getClass().getResource("");
+        Image imageCursor = Toolkit.getDefaultToolkit().getImage(classUrl);
+        world.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imageCursor, new Point(0, 0), "cursor"));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 关闭时结束程序
         frame.setSize(WIDTH, HEIGHT);// 设置窗口大小
         frame.setResizable(false);// 不可调节大小
