@@ -101,12 +101,8 @@ public class World extends JPanel{
         }
     }
     
-<<<<<<<HEAD
     public int haveBoss = 0;
     private int enemiesCount = 0;
-    
-=======
-        >>>>>>>main
     
     /**
      * 敌人生成
