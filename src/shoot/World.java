@@ -148,6 +148,7 @@ public class World extends JPanel{
             if (enemies[i].isOut() || enemies[i].isLife == 2) {
                 if (enemies[i] instanceof Bosses) {
                     haveBoss -= 1;
+                    hero.cleanFire();
                 }
                 enemies[i] = enemies[enemies.length - 1];
                 enemies = Arrays.copyOf(enemies, enemies.length - 1);
