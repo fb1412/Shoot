@@ -9,14 +9,14 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class World extends JPanel {
+public class World extends JPanel{
     public static final int START = 0;
     public static final int RUNNING = 1;
     public static final int PAUSE = 2;
     public static final int GAME_OVER = 3;
     private int state = START;
     private int score = 0;
-
+    
     public static final int WIDTH = Images.Sky.getWidth();
     public static final int HEIGHT = Images.Sky.getHeight();
     private static final int interval = Setting.Interval; // xx毫秒一帧
@@ -25,23 +25,23 @@ public class World extends JPanel {
     private static final int bigAirplaneFrequency = Setting.BigAirplaneFrequency; // 大飞机概率%
     private static final int BeeFrequency = Setting.BeeFrequency; // 火力奖励概率%
     private static final int waspFrequency = Setting.WaspFrequency; // 生命奖励概率%
-
+    
     private Sky sky = new Sky();
     private Hero hero = new Hero();
     private Enemies[] enemies = {};
     private Bullet[] bullet = {};
-
-    public void action() {
-        MouseAdapter m = new MouseAdapter() {
-            public void mouseMoved(MouseEvent e) {
+    
+    public void action(){
+        MouseAdapter m = new MouseAdapter(){
+            public void mouseMoved(MouseEvent e){
                 if (state == RUNNING) {
                     int x = e.getX();
                     int y = e.getY();
                     hero.move(x - hero.width / 2, y - hero.height / 2);
                 }
             }
-
-            public void mouseClicked(MouseEvent e) {
+            
+            public void mouseClicked(MouseEvent e){
                 switch (state) {
                     case START:
                         state = RUNNING;
@@ -56,14 +56,14 @@ public class World extends JPanel {
                         break;
                 }
             }
-
-            public void mouseExited(MouseEvent e) {
+            
+            public void mouseExited(MouseEvent e){
                 if (state == RUNNING) {
                     state = PAUSE;
                 }
             }
-
-            public void mouseEntered(MouseEvent e) {
+            
+            public void mouseEntered(MouseEvent e){
                 if (state == PAUSE) {
                     state = RUNNING;
                 }
@@ -71,11 +71,11 @@ public class World extends JPanel {
         };
         this.addMouseListener(m);
         this.addMouseMotionListener(m);
-
+        
         System.out.println("开始");
         Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            public void run() {
+        timer.schedule(new TimerTask(){
+            public void run(){
                 if (state == RUNNING) {
                     enemiesProduce();
                     attack();
@@ -89,22 +89,22 @@ public class World extends JPanel {
             }
         }, interval, interval);
     }
-
+    
     /**
      * 飞行物移动
      */
-    public void flyingStep() {
+    public void flyingStep(){
         sky.step();
         for (Enemies i : enemies) {
             // System.out.println(i.x + "," + i.y);
             i.step();
         }
     }
-
+    
     /**
      * 敌人生成
      */
-    public void enemiesProduce() {
+    public void enemiesProduce(){
         Random r = new Random();
         int type = r.nextInt(100);
         // System.out.println(type + "|" + (type % num == 0));
@@ -122,39 +122,39 @@ public class World extends JPanel {
             }
         }
     }
-
+    
     /**
      * 飞行物清除
      */
-    public void enemiesRemove() {
-        for (int i = 0; i < enemies.length; i++) {
+    public void enemiesRemove(){
+        for (int i = 0 ; i < enemies.length ; i++) {
             if (enemies[i].isOut() || enemies[i].isLife == 2) {
                 enemies[i] = enemies[enemies.length - 1];
                 enemies = Arrays.copyOf(enemies, enemies.length - 1);
             }
         }
-
+        
         // for (Enemies i : enemies) {
         // if (i.isOut()) {
         // i = enemies[enemies.length - 1];
         // enemies = Arrays.copyOf(enemies, enemies.length - 1);
         // }
         // }
-
-        for (int i = 0; i < bullet.length; i++) {
+        
+        for (int i = 0 ; i < bullet.length ; i++) {
             if (bullet[i].isOut() || bullet[i].isLife == 1) {
                 bullet[i] = bullet[bullet.length - 1];
                 bullet = Arrays.copyOf(bullet, bullet.length - 1);
             }
         }
     }
-
+    
     /**
      * 发射
      */
     public int index = 0;
-
-    public void attack() {
+    
+    public void attack(){
         index++;
         if (state == RUNNING && index > bulletFrequency) {
             index = 0;
@@ -166,22 +166,22 @@ public class World extends JPanel {
             i.step();
         }
     }
-
+    
     /**
      * 攻击
      */
-    public void hitEnemies() {
+    public void hitEnemies(){
         // System.out.println(enemies.length + "|" + bullet.length);
-        for (int i = 0; i < bullet.length; i++) {
+        for (int i = 0 ; i < bullet.length ; i++) {
             Bullet b = bullet[i];
-            for (int j = 0; j < enemies.length; j++) {
+            for (int j = 0 ; j < enemies.length ; j++) {
                 Enemies e = enemies[j];
                 if (b.isHit(e)) {
                     b.isLife = 1;
                     if (e.goDead()) {
                         e.isLife = 1;
+                        score += e.getScore();
                     }
-                    score += e.getScore();
                     boolean isAward = e instanceof Award;
                     if (isAward) {
                         Award award = (Award) e;
@@ -193,12 +193,12 @@ public class World extends JPanel {
             }
         }
     }
-
+    
     /**
      * 撞击
      */
-    public void hitHero() {
-        for (int i = 0; i < enemies.length; i++) {
+    public void hitHero(){
+        for (int i = 0 ; i < enemies.length ; i++) {
             boolean hit = hero.isHit(enemies[i]);
             if (hit) {
                 enemies[i].isLife = 1;
@@ -209,8 +209,8 @@ public class World extends JPanel {
             }
         }
     }
-
-    public void paint(Graphics g) {
+    
+    public void paint(Graphics g){
         g.drawImage(sky.getImg(), sky.x, sky.y, null);
         g.drawImage(sky.getImg(), sky.x, sky.y1, null);
         // System.out.println(hero.x + "|" + hero.y);
@@ -221,7 +221,7 @@ public class World extends JPanel {
         for (FlyingObject i : bullet) {
             g.drawImage(i.getImg(), i.x, i.y, null);
         }
-
+        
         g.drawString("打飞机", 50, 50);
         g.drawString("分数：" + score, 50, 65);
         g.drawString("血量：" + hero.getLife(), 50, 80);
@@ -229,20 +229,20 @@ public class World extends JPanel {
         switch (state) {
             case START:
                 g.drawImage(Images.start, (WIDTH - Images.start.getWidth()) / 2,
-                        (HEIGHT - Images.start.getHeight()) / 4, null);
+                            (HEIGHT - Images.start.getHeight()) / 4, null);
                 break;
             case PAUSE:
                 g.drawImage(Images.pause, (WIDTH - Images.pause.getWidth()) / 2,
-                        (HEIGHT - Images.pause.getHeight()) / 4, null);
+                            (HEIGHT - Images.pause.getHeight()) / 4, null);
                 break;
             case GAME_OVER:
                 g.drawImage(Images.gameover, (WIDTH - Images.gameover.getWidth()) / 2,
-                        (HEIGHT - Images.gameover.getHeight()) / 4, null);
+                            (HEIGHT - Images.gameover.getHeight()) / 4, null);
                 break;
         }
     }
-
-    public static void main(String[] args) {
+    
+    public static void main(String[] args){
         JFrame frame = new JFrame();
         World world = new World();
         frame.add(world);
@@ -251,7 +251,7 @@ public class World extends JPanel {
         frame.setResizable(false);// 不可调节大小
         frame.setLocationRelativeTo(null); // 设置窗口打开时的位置
         frame.setVisible(true);// 设置可见
-
+        
         world.action();
     }
 }

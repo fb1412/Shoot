@@ -29,19 +29,20 @@ public class Images{
         Hero[1] = readImage("img/hero1.png");
         
         Airplane = new BufferedImage[5];
+        for (int i = 0 ; i < Airplane.length ; i++) {
+            Airplane[i] = readImage("img/airplane" + i + ".png");
+        }
         BigAirplane = new BufferedImage[5];
+        for (int i = 0 ; i < BigAirplane.length ; i++) {
+            BigAirplane[i] = readImage("img/bigAirplane" + i + ".png");
+        }
         Bee = new BufferedImage[5];
+        for (int i = 0 ; i < Bee.length ; i++) {
+            Bee[i] = readImage("img/bee" + i + ".png");
+        }
         Wasp = new BufferedImage[5];
-        
-        Airplane[0] = readImage("img/airplane.png");
-        BigAirplane[0] = readImage("img/bigAirplane.png");
-        Bee[0] = readImage("img/bee.png");
-        Wasp[0] = readImage("img/wasp.png");
-        for (int i = 1 ; i < Airplane.length ; i++) {
-            Airplane[i] = readImage("img/bom" + 1 + ".png");
-            Bee[i] = readImage("img/bom" + 1 + ".png");
-            BigAirplane[i] = readImage("img/bom" + 1 + ".png");
-            Wasp[i] = readImage("img/bom" + 1 + ".png");
+        for (int i = 0 ; i < Wasp.length ; i++) {
+            Wasp[i] = readImage("img/wasp" + i + ".png");
         }
         
         start = readImage("img/start.png");
