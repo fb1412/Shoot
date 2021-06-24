@@ -35,7 +35,7 @@ public class World extends JPanel{
     public void action(){
         MouseAdapter m = new MouseAdapter(){
             
-            // 获取主角位置
+            // 获取鼠标位置传给主角
             public void mouseMoved(MouseEvent e){
                 if (state == RUNNING) {
                     int x = e.getX();
@@ -79,7 +79,7 @@ public class World extends JPanel{
         this.addMouseMotionListener(m);
         
         System.out.println("开始");
-        Timer timer = new Timer();
+        Timer timer = new Timer(); // 计时器
         timer.schedule(new TimerTask(){
             public void run(){
                 if (state == RUNNING) {
@@ -155,6 +155,7 @@ public class World extends JPanel{
             }
         }
         
+        // 不能使用增强for删除数组中的元素
         // for (Enemies i : enemies) {
         // if (i.isOut()) {
         // i = enemies[enemies.length - 1];
@@ -230,6 +231,7 @@ public class World extends JPanel{
         }
     }
     
+    @Override
     public void paint(Graphics g){
         g.drawImage(sky.getImg(), sky.x, sky.y, null);
         g.drawImage(sky.getImg(), sky.x, sky.y1, null);
