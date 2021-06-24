@@ -266,14 +266,17 @@ public class World extends JPanel{
         JFrame frame = new JFrame();
         World world = new World();
         frame.add(world);
+        
+        /*设置在窗口中隐藏鼠标指针*/
         URL classUrl = world.getClass().getResource("");
         Image imageCursor = Toolkit.getDefaultToolkit().getImage(classUrl);
         world.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imageCursor, new Point(0, 0), "cursor"));
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 关闭时结束程序
         frame.setSize(WIDTH, HEIGHT);// 设置窗口大小
-        frame.setResizable(false);// 不可调节大小
+        frame.setResizable(false);// 设置不可调节窗口大小
         frame.setLocationRelativeTo(null); // 设置窗口打开时的位置
-        frame.setVisible(true);// 设置可见
+        frame.setVisible(true);// 设置可见，并尽快调用paint()画图形
         
         world.action();
     }
